@@ -1,0 +1,4 @@
+<xml>
+    <temperature units = "c">-10</temperature>
+    <wind_speed_view units = "m/s">-1</wind_speed_view>
+    <preassure units = "mmHg">-14</preassure>
