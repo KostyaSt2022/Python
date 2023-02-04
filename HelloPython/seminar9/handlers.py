@@ -14,7 +14,7 @@ current = 0
 @dp.message_handler(commands=['start', 'старт'])
 async def mes_start(message: types.Message):
     name = message.from_user.first_name
-    await message.answer(f'{name}, привет! Сегодня сыграем с тобой в конфеты (150 конфет)! Для начала игры введи команду /new_game. '
+    await message.answer(f'{name}, привет! Сегодня сыграем с тобой в конфеты (150 конфет)! Для начала игры введи команду /new_game.\n'
                          f'Для настройки конфет введи команду /set и укажи количество конфет\n'
                          f'Или /duel и id оппонента, для игры вдвоем')
     print(message.from_user.id)
@@ -34,6 +34,19 @@ async def mes_new_game(message: types.Message):
     else:
         await message.answer(f'Игра началась. По жребию первым ходит Банди')
         await bot_turn(message)
+
+
+#Хотел реализовать функцию вывода ID пользователей,
+# чтобы можно было играть с любым, а не звать кого-то специально
+# НО НЕ СМОГ и СНЁС всё что было ДО:
+@dp.message_handler(commands=['ids'])
+async def users_id(message: types.Message):
+    user_id = message.from_user.id
+    name = message.from_user.first_name
+    await message.answer(f'{name}, вот твой ID в Telegram ({user_id}).\n'
+                        f'Отправь его своему другу и можете сразиться в дуэли (/duel ID_противника).')
+    print(message.from_user.id)
+
 
 
 @dp.message_handler(commands=['duel'])
